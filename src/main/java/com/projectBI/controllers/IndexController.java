@@ -2,6 +2,8 @@ package com.projectBI.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -79,16 +81,20 @@ public class IndexController {
 	public String deletarUsuario() {
 		return "deletarUsuario";
 	}
-	@RequestMapping(value="/criarEnquete", method=RequestMethod.GET)
-	public String getEnquete() {
-		
-		return "criarEnquete";
-	}
+
 	@RequestMapping(value="/criarEnquete", method=RequestMethod.POST)
 	public String setEnquete() {
 		
 		return "criarEnquete";
 	}
+	@GetMapping("/criarEnquete")
+	public ModelAndView arrayController(ModelAndView model) {
+		String[] perguntas = {"Oi meu nome é Betina?", "E eu tenho o patrimônio acumulado em 1 milhão de reais"};
+		model.addObject("perguntas", perguntas);
+		return model;
+	}
+	
+	
 	
 	
 	

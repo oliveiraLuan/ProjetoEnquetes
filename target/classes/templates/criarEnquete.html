@@ -19,16 +19,12 @@
 		
 	<h3>Gestão operacional</h3>
 	<form method="post">
-	<p class="pergunta1">
-		<label for="pergunta1"></label>
-			<input type="radio" required="required"/>Sim
-			<input type="radio" value="nao" required="required"/>Não
-	</p>	
-	<p class="pergunta2">
-		<label for="pergunta2">Não existe rotina dos Tecnicos</label>
-			<input type="radio" name="pergunta2" value="sim" required="required"/>Sim
-			<input type="radio" name="pergunta2" value="nao"required="required"/>Não
-	</p>	
+	<ul th:each="pergunta : ${perguntas}">
+		<li th:text="${pergunta}"/></li>
+		<input type="radio" name="pergunta"/>Sim
+		<input type="radio" name="pergunta"/>Não	
+	</ul>	
+	
 	<!--
 	<p class="pergunta3">
 		<label for="pergunta3">Nunca foi feito manuntenção Preventiva</label>
