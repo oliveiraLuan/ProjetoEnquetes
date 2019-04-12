@@ -81,6 +81,12 @@ public class IndexController {
 	}
 	@RequestMapping(value="/criarEnquete", method=RequestMethod.GET)
 	public String getEnquete() {
+		
+		return "criarEnquete";
+	}
+	@RequestMapping(value="/criarEnquete", method=RequestMethod.POST)
+	public String setEnquete() {
+		
 		return "criarEnquete";
 	}
 	
