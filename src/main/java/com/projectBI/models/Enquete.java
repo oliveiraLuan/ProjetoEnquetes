@@ -15,31 +15,59 @@ public class Enquete {
 	@OneToMany
 	private List<Funcionario> funcionarios;
 	
-	@NotNull
-	private String pergunta;
 	
-	@NotNull
-	private boolean resposta;
+	private int respostaSim;
+	
+	private int respostaNao;
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int codigoEnquete;
+	
+	public Enquete() {
+		
+	}	
 
-	
-	public void setPergunta(String pergunta) {
-		this.pergunta = pergunta;
+	public List<Funcionario> getFuncionarios() {
+		return funcionarios;
 	}
-	
-	public boolean getResposta() {
-		return resposta;
+
+
+	public void setFuncionarios(List<Funcionario> funcionarios) {
+		this.funcionarios = funcionarios;
 	}
-	
-	public void setResposta(boolean resposta) {
-		this.resposta = resposta;
+
+
+	public int getRespostaSim() {
+		return respostaSim;
 	}
-	
-	public int getCodigo() {
+
+
+	public void setRespostaSim(int respostaSim) {
+		this.respostaSim = respostaSim;
+	}
+
+
+	public int getRespostaNao() {
+		return respostaNao;
+	}
+
+
+	public void setRespostaNao(int respostaNao) {
+		this.respostaNao = respostaNao;
+	}
+
+
+	public int getCodigoEnquete() {
 		return codigoEnquete;
 	}
 
+
+	public void setCodigoEnquete(int codigoEnquete) {
+		this.codigoEnquete = codigoEnquete;
+	}
+
+	
+	
 }
