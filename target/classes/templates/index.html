@@ -3,7 +3,7 @@
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 	<meta charset="utf-8">
-	<title>Projeto BI</title>
+	<title>Sistema de Enquetes ~ Login</title>
 	 <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
       <!--Import materialize.css-->
@@ -11,23 +11,24 @@
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <link rel="stylesheet" href="style/style.css"/>
+      <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 	
 	<header>
 		
-	<h3>Tela de login</h3>
-	<form name="login" method="post">
+	<h3>SE</h3>
+	<form name="login" class="formlogin" method="post">
 	<p class="login">
-		<label for="email">Email</label>
-		<input type="email" name="email" value="" required="required" placeholder="Informe o e-mail do usuário"></input>
+		<label for="email">E-MAIL</label>
+		<input type="email" name="email" value="" required="required" placeholder="Informe seu e-mail"></input>
 	</p>	
 	<p class="senha">
-		<label for="senha">Senha</label>
+		<label for="senha">SENHA</label>
 		<input type="password" name="senha" value="" required="required" placeholder="***********"></input>
 	</p>	
-	<button type="submit">Login</button>
+	<br/>
+	<button type="submit" class="botaoLogin">LOGIN</button>
 	
 	</form>
 	</header>
