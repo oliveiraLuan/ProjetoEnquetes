@@ -3,7 +3,7 @@
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 	<meta charset="utf-8">
-	<title>Projeto BI</title>
+	<title th:text="${'Olá, ' + funcionario.nome}">Checkup Corp</title>
 	 <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
       <!--Import materialize.css-->
@@ -11,19 +11,30 @@
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <link rel="stylesheet" href="style/styleCss.css"/>
+      <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 	
 	<header>
 	
-	<h5>Olá <label th:text="${funcionario.nome}"></label></h5>
+	<nav>
+	<ul class="menu">
+		<li><a href="comum">Home</a></li>
+		
+		<li><a>Enquete</a>
+			<ul>
+				<li><a href="criarEnquete">Formulário</a></li>
+			</ul>
+			</li>	
+		
+		
+		</ul>
+		
+	</nav>	
+	
+	
 			
-	<h4>Tela de usuário comum</h4>
 	
-	<h4>Enquete</h4>
-	
-	<li><a href="criarEnquete">Formulário</a></li>
 	
 	</header>
 	

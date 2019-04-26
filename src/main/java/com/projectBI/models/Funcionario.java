@@ -85,46 +85,9 @@ public class Funcionario {
 	}
 	
 	public String getUsername() {
-		// TODO Auto-generated method stub
 		return this.email;
 	}
 
 	
-	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
 	
-	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	
-	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-
-	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	
-	// metodo que utiliza a interface PasswordAutentication para autenticar a senha do usuario 
-	
-	public boolean autentica(int senha) {
-		if (senha != senha) {
-
-			return false;
-
-		} else {
-
-			return false;
-
-		}
-
-	}
 }

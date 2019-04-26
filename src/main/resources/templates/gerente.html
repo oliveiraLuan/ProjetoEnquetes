@@ -3,7 +3,7 @@
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 	<meta charset="utf-8">
-	<title>Projeto BI</title>
+	<title th:text="${'Olá, ' + funcionario.nome}"></title>
 	 <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
       <!--Import materialize.css-->
@@ -11,31 +11,36 @@
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <link rel="stylesheet" href="style/styleCss.css"/>
+  
+      <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-	
-	<header>
-	
-	<h5>Olá <label th:text="${funcionario.nome}"></label></h5>
-	
+	<nav>
+	<ul class="menu">
+		<li><a href="gerente">Home</a></li>
+		<li><a>Usuários</a>
+					<ul>
+					<li><a href="cadastrarUsuario">Cadastrar Usuário</a></li>
+					<li><a href="listarUsuarios">Listar Usuários</a></li>
+					<li><a href="deletarUsuario">Deletar Usuário</a></li>
+					<li><a href="atualizarDados">Atualizar dados</a></li>
+					</ul>
+				</li>
 		
-	<h4>Usuários</h4>
-	<ul>
-	<li><a href="cadastrarUsuario">Cadastrar Usuário</a></li>
-	<li><a href="listarUsuarios">Listar Usuários</li>
-	<li><a href="deletarUsuario">Deletar Usuário</li>
-	<li><a href="atualizarDados">Atualizar dados</li>
-	</ul>
-	<h4>Enquete</h4>
+		<li><a>Relatórios</a>	
+		<ul>
+			<li><a href="displayPieChart">Gráfico Pizza</a></li>
+			<li><a href="displayBarGraph">Gráfico Barra</a></li>
+		</ul>
+		</li>
+		
+		</ul>
+		
+	</nav>	
 	
-	<li><a href="criarEnquete">Formulário</a></li>
 	
-	<h4>Relatórios</h4>
-	<li><a href="displayPieChart">Gráfico Pizza</a></li>
-	<li><a href="displayBarGraph">Gráfico Barra</a></li>
-	</header>
 	
+
 
 </body>
 

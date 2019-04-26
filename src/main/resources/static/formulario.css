@@ -91,6 +91,7 @@ ul li  a:hover{
 .menu li ul{
 	position: absolute;
 	top: 55px;
+	
 	left: 0;
 	background-color: #fff;
 	display: none;
@@ -120,6 +121,31 @@ button{
 	border-radius: 3%;
 }
 
+.li{
+	text-decoration:none;
+}
 
+.pergunta{
+	
+	background-color: #fff;
+	color: #4d4d4d;
+	box-shadow: #939393 2px 2px 5px;
+	border-radius: 1%;
+	width: 45%;
+	height: 38px;
+	margin: auto;
+	text-decoration: none;
+	
+}
 
+.iter{
+	margin-bottom: 2%;
+	margin-top: 1.5%;
+	background-color: #000040;
+	color: #fff;
+	width: 10%;
+	border-radius: 3%;
+	text-decoration: none;
+	
+}
 

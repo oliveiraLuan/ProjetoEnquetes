@@ -27,123 +27,134 @@ public class IndexController {
 	private double mediaNao;
 	private double somaTotalSim = 0;
 	private double somaTotalNao = 0;
-	
+
 	@Autowired
 	FuncionarioRepository funcionarioRepository;
 	@Autowired
 	EnqueteRepository enqueteRepository;
-	@RequestMapping(value="/", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index() {
 		return "index";
 	}
-	
+
 	@RequestMapping("/cadastrarUsuario")
 	public String cadastro() {
 		return "cadastro";
 	}
-	
-	@RequestMapping(value="/cadastrarUsuario", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/cadastrarUsuario", method = RequestMethod.POST)
 	public String cadastro(String nome, String email, String senha, String tipo) {
 		Funcionario funcionario = new Funcionario(nome, email, senha, tipo);
 		funcionarioRepository.save(funcionario);
 		return "redirect:/";
 	}
+
 	@RequestMapping(value="/", method=RequestMethod.POST)
 	public String logar(Funcionario funcionario) {
-		if(funcionarioRepository.findByEmail(funcionario.getEmail()) != null) {
+		if(funcionarioRepository.findByEmail(funcionario.getEmail()) != null ) {
 			if(funcionarioRepository.findByEmail(funcionario.getEmail()).getSenha().equals(funcionario.getSenha())) {
 				recebeLogin = funcionario.getEmail();
-				}if(funcionarioRepository.findByEmail(funcionario.getEmail()).getTipo().equals("Gerente")){
+				if(funcionarioRepository.findByEmail(funcionario.getEmail()).getTipo().equals("Gerente")){
 					return "redirect:/gerente";	
 				}else if(funcionarioRepository.findByEmail(funcionario.getEmail()).getTipo().equals("Comum")) {
 					return "redirect:/comum";	
+				}
+				
 				}
 			
 			return"redirect:/";
 			}
 		return "redirect:/";
 		}
-	@RequestMapping(value="/gerente", method=RequestMethod.GET)
+	@RequestMapping(value = "/gerente", method = RequestMethod.GET)
 	public ModelAndView redirecionaGerente() {
 		ModelAndView mv = new ModelAndView("gerente");
 		Funcionario funcionario = funcionarioRepository.findByEmail(recebeLogin);
 		mv.addObject("funcionario", funcionario);
+		funcionario.setEmail("");
 		return mv;
 	}
-	@RequestMapping(value="/comum", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/comum", method = RequestMethod.GET)
 	public ModelAndView redirecionaComum() {
 		ModelAndView mv = new ModelAndView("comum");
 		Funcionario funcionario = funcionarioRepository.findByEmail(recebeLogin);
 		mv.addObject("funcionario", funcionario);
 		return mv;
 	}
-	@RequestMapping(value="/listarUsuarios", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/listarUsuarios", method = RequestMethod.GET)
 	public ModelAndView listar() {
 		ModelAndView mv = new ModelAndView("listarUsuarios");
 		Iterable<Funcionario> funcionario = funcionarioRepository.findAll();
 		mv.addObject("funcionario", funcionario);
 		return mv;
 	}
-	
-	@RequestMapping(value="/atualizarDados", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/atualizarDados", method = RequestMethod.GET)
 	public ModelAndView getDados() {
 		ModelAndView mv = new ModelAndView("atualizarDados");
 		Funcionario funcionario = funcionarioRepository.findByEmail(recebeLogin);
 		mv.addObject("funcionario", funcionario);
 		return mv;
 	}
-	@RequestMapping(value="/atualizarDados", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/atualizarDados", method = RequestMethod.POST)
 	public void setDados(Funcionario funcionario) {
 		Funcionario f = funcionarioRepository.findByEmail(recebeLogin);
 		f.setNome(funcionario.getNome());
 		f.setEmail(funcionario.getEmail());
 		funcionarioRepository.save(f);
 	}
-	
-	@RequestMapping(value="/deletarUsuario", method=RequestMethod.POST)
-	public void deletarUsuario(String email) {
+
+	@RequestMapping(value = "/deletarUsuario", method = RequestMethod.POST)
+	public String deletarUsuario(String email) {
 		Funcionario f = funcionarioRepository.findByEmail(email);
-		funcionarioRepository.delete(f);
+		if (f != null) {
+			if (funcionarioRepository.findByEmail(email).equals(f)) {
+				funcionarioRepository.delete(f);
+			} else {
+				return "deletarUsuario";
+			}
+		}
+
+		return "deletarUsuario";
 	}
-	
-	@RequestMapping(value="/deletarUsuario", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/deletarUsuario", method = RequestMethod.GET)
 	public String deletarUsuario() {
 		return "deletarUsuario";
 	}
 
-	@RequestMapping(value="/criarEnquete", method=RequestMethod.POST)
-	public String setEnquete(@RequestParam("iter")List<String> to) {
+	@RequestMapping(value = "/criarEnquete", method = RequestMethod.POST)
+	public String setEnquete(@RequestParam("iter") List<String> to) {
 		Enquete enquete = new Enquete();
-		for(String resposta:to) {
-			if(resposta.equals("Sim")) {
+		for (String resposta : to) {
+			if (resposta.equals("Sim")) {
 				qtdSim = qtdSim + 1;
 				enquete.setRespostaSim(qtdSim);
-			}else {
+			} else {
 				qtdNao = qtdNao + 1;
 				enquete.setRespostaNao(qtdNao);
 			}
 
 		}
-		
-		
-			
+
 		enqueteRepository.save(enquete);
 		enquete.setRespostaSim(0);
 		enquete.setRespostaNao(0);
-		
+
 		return "criarEnquete";
 	}
+
 	@GetMapping("/criarEnquete")
 	public ModelAndView arrayController(ModelAndView model) {
-		String[] perguntas = {"Demora na resposta mediante acionamento da Olitel.", 
-				"Tudo é reativo.", 
-				"Não existe rotina dos Tecnicos.",
-				"Nunca foi feito manuntenção Preventiva.",
+		String[] perguntas = { "Demora na resposta mediante acionamento da Olitel.", "Tudo é reativo.",
+				"Não existe rotina dos Tecnicos.", "Nunca foi feito manuntenção Preventiva.",
 				"Nunca foi feito apresentação de Indicadores.",
-				"Não existe divulgação de Check List Diário da Central.",
-				"Nuna foi informado o Capacity da Central.",
-				"Não exisite controle de Ramais Ativos.",
-				"Não existe monitoração dos Hardwares da Central.",
+				"Não existe divulgação de Check List Diário da Central.", "Nunca foi informado o Capacity da Central.",
+				"Não existe controle de Ramais Ativos.", "Não existe monitoração dos Hardwares da Central.",
 				"Não existe controle e gerenciamento dos Troncos e Canais.",
 				"Não existe controle e gerenciamento das licenças.",
 				"Nunca foi informado ou apresentado uma Topologia do ambienete.",
@@ -151,75 +162,60 @@ public class IndexController {
 				"Nunca foi feito ou apresentado nenhuma documentação de Survey.",
 				"Cliente não sabe se existe ou não SLA, e caso exista, cliente não sabe quanto é.",
 				"Não existe report sobre chamados na Olitel.",
-				"Demora na resposta da Olitel quando envolve especialista.",
-				"Tempo de apresentação da Solução.",
-				"Solução sempre atrelada a área comercial.",
-				"Solução só chega com proposta comercial.",
-				"Demora no atendimento de troca e manutenção de Hardware.",
-				"Olitel só responde se Alessandro cobra.",
-				"Olitel só dá prioridade depois que Alessandro Cobra.",
-				"Transparencia Contratual.",
-				"Residentes são dedicados.",
-				"Residentes são esforçados.",
-				"Residentes representam a Olitel.",
+				"Demora na resposta da Olitel quando envolve especialista.", "Tempo de apresentação da Solução.",
+				"Solução sempre atrelada a área comercial.", "Solução só chega com proposta comercial.",
+				"Demora no atendimento de troca e manutenção de Hardware.", "Olitel só responde se Alessandro cobra.",
+				"Olitel só dá prioridade depois que Alessandro Cobra.", "Transparencia Contratual.",
+				"Residentes são dedicados.", "Residentes são esforçados.", "Residentes representam a Olitel.",
 				"Comercial sempre disponível quando acionado independente do horário e problema.",
 				"Ausência de Gestão Contratual.",
 				"Falta de clareza e visibilidade do senso de urgência sobre o Back do Fabricante.",
-				"Falta de Gestão dos Residentes.",
-				"Não existe cadência com Tecban e Residentes.",
-				"Falta Senso de Prioridade.",
-				"Pontualidade dos residentes é satisfatória",
+				"Falta de Gestão dos Residentes.", "Não existe cadência com Tecban e Residentes.",
+				"Falta Senso de Prioridade.", "Pontualidade dos residentes é satisfatória",
 				"Ótimo Atendimento dos residentes.",
 				"Falta de Treinamento da Equipe Residente / Transferencia de conhecimento da Equipe especialista para diminuir acionamento dependentes da Olitel.",
-				"Acionamento e Desenvolvimento dos Chamados para Regionais são perfeitos.",
-				"Falta Escalation",
-				"Não conhece Fluxograma Olitel",
-				"Poucas Visitas da Olitel",
+				"Acionamento e Desenvolvimento dos Chamados para Regionais são perfeitos.", "Falta Escalation",
+				"Não conhece Fluxograma Olitel", "Poucas Visitas da Olitel",
 				"Demora na ação do Especialista quando em campo devido deslocamento.",
 				"Falta de Ferramenta adequada / basica para os Residentes",
-				"Gestão do Residente fica por conta da Tecban"};
+				"Gestão do Residente fica por conta da Tecban" };
 		model.addObject("perguntas", perguntas);
 		return model;
 	}
+
 	@GetMapping("/displayBarGraph")
 	public String barGraph(Model model) {
-		for(Enquete somatoria : enqueteRepository.findAll()) {
+		for (Enquete somatoria : enqueteRepository.findAll()) {
 			somaTotalSim += somatoria.getRespostaSim();
 			somaTotalNao += somatoria.getRespostaNao();
 		}
-		
+
 		mediaSim = (somaTotalSim / (somaTotalNao + somaTotalSim)) * 100;
 		mediaNao = (somaTotalNao / (somaTotalNao + somaTotalSim)) * 100;
-		
-		
+
 		Map<String, Double> surveyMap = new LinkedHashMap<>();
 		surveyMap.put("Sim", (Double) mediaSim);
 		surveyMap.put("Não", (Double) mediaNao);
 		model.addAttribute("surveyMap", surveyMap);
-		
-		return "relatorios" ;
+
+		return "relatorios";
 	}
-	@GetMapping("/displayPieChart")	
+
+	@GetMapping("/displayPieChart")
 	public String pieChart(Model model) {
-		
-		
-		for(Enquete somatoria : enqueteRepository.findAll()) {
+
+		for (Enquete somatoria : enqueteRepository.findAll()) {
 			somaTotalSim += somatoria.getRespostaSim();
 			somaTotalNao += somatoria.getRespostaNao();
 		}
-		
+
 		mediaSim = (somaTotalSim / (somaTotalNao + somaTotalSim)) * 100;
 		mediaNao = (somaTotalNao / (somaTotalNao + somaTotalSim)) * 100;
-		
+
 		model.addAttribute("Sim", mediaSim);
 		model.addAttribute("Nao", mediaNao);
-		
-		
+
 		return "pieChart";
 	}
-	
-	
-	
-	
 
 }

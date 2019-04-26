@@ -5,11 +5,6 @@
 
 body{
 	background-color: #f3f3f3;	
-	margin: auto;
-	display:flex;
-	flex-direction: column;
-	text-align: center;
-	font-family: Sans-serif;
 }
 
 .botaoLogin{
@@ -46,9 +41,8 @@ label{
 input{
 	border: none;
 	border-bottom: 2px solid #000080;
-	width: 30%;
-	padding: 8px 25px;	
-	
+	width: 80%;
+	padding: 12px 25px;	
 }
 .menu{
 	list-style:none;
@@ -108,18 +102,5 @@ ul li  a:hover{
 	border-bottom: 0.3px solid #000080;
 }
 
-
-button{
-	background-color: red; 
-	color: #FFFFFF;
-	width: 10%;
-	padding: 1.5% 2%;
-	border: none;
-	margin-top: 3%;
-	cursor: pointer;
-	border-radius: 3%;
-}
-
-
-
+  
 
