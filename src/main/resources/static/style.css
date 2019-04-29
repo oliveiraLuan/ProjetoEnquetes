@@ -172,6 +172,12 @@ tr:nth-child(even){
 	font-family: sans-serif;
 }
 
+th, td{
+	text-align: left;
+	padding: 2.3%;
+	font-family: Sans-serif;
+}
+
   
 }
 

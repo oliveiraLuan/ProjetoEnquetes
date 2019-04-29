@@ -131,5 +131,24 @@ button{
 	border-radius: 2%;
 }
 
+@media only screen and (max-width: 600px) {
+  button {
+    background-color: red; 
+	color: #FFFFFF;
+	width: 20%;
+	padding: 1.5% 2%;
+	border: none;
+	margin-top: 3%;
+	cursor: pointer;
+	border-radius: 3%;
+  }
+  
+.menu li{
+	position: relative;
+	float:left;
+	background-color: #000020;
+	width: 30%;
+	font-family: sans-serif;
+}
 
 
