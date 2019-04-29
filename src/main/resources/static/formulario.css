@@ -135,7 +135,7 @@ button{
 	height: 38px;
 	margin: auto;
 	text-decoration: none;
-	
+	list-style-type: none;
 }
 
 .iter{
@@ -148,4 +148,7 @@ button{
 	text-decoration: none;
 	
 }
+
+li.pergunta{
+	text-decoration: none;
 
