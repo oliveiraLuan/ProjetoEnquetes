@@ -130,6 +130,8 @@ public class IndexController {
 	@RequestMapping(value = "/criarEnquete", method = RequestMethod.POST)
 	public String setEnquete(@RequestParam("iter") List<String> to) {
 		Enquete enquete = new Enquete();
+		qtdSim = 0;
+		qtdNao = 0;
 		for (String resposta : to) {
 			if (resposta.equals("Sim")) {
 				qtdSim = qtdSim + 1;
