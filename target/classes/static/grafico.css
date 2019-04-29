@@ -122,6 +122,14 @@ button{
 	border-radius: 3%;
 }
 
-
+@media only screen and (max-width: 600px) {
+	.menu li{
+	position: relative;
+	float:left;
+	background-color: #000020;
+	width: 15%;
+	font-family: sans-serif;
+}
+}
 
 
