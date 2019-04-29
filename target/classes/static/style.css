@@ -157,7 +157,7 @@ tr:nth-child(even){
   table{
 	border-collapse: collapse;
 	border-spacing: 0;
-	width: 90%;
+	width: 20%;
 	border: 1px solid #ccc;
 	margin: auto;
 	margin-top: 2.245%;
@@ -174,7 +174,7 @@ tr:nth-child(even){
 
 th, td{
 	text-align: left;
-	padding: 2.7%;
+	padding: 2.6%;
 	font-family: Sans-serif;
 }
 
