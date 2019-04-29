@@ -151,4 +151,39 @@ button{
 
 li.pergunta{
 	text-decoration: none;
+@media only screen and (max-width: 600px) {
+	.pergunta{
+	
+	background-color: #fff;
+	color: #4d4d4d;
+	box-shadow: #939393 2px 2px 5px;
+	border-radius: 1%;
+	width: 85%;
+	height: 78px;
+	margin: auto;
+	text-decoration: none;
+	list-style-type: none;
+}
 
+button{
+	background-color: red; 
+	color: #FFFFFF;
+	width: 20%;
+	padding: 1.5% 2%;
+	border: none;
+	margin-top: 3%;
+	cursor: pointer;
+	border-radius: 3%;
+}
+
+.menu li{
+	position: relative;
+	float:left;
+	background-color: #000020;
+	width: 25%;
+	font-family: sans-serif;
+}
+
+	
+	
+}
