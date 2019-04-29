@@ -38,17 +38,25 @@
 		</ul>
 		
 	</nav>	
-		
+
 	<h4>Lista de usuários</h4>
-	<div th:each="funcionario: ${funcionario}">
 	
-		<p>Nome: <span th:text="${funcionario.nome}"></span></p>
-		<p>Email: <span th:text="${funcionario.email}"></span></p>
-		<p>Tipo: <span th:text="${funcionario.tipo}"></span></p>
-		
-		
 	
-	</div>
+	<table>
+	<tr>
+	
+	<th>Nome</th>
+	<th>E-mail</th>
+	<th>Tipo</th>
+	
+	</tr>
+	<tr th:each="funcionario: ${funcionario}">
+		<td><span th:text="${funcionario.nome}"></span></td>
+		<td><span th:text="${funcionario.email}"></span></td>
+		<td><span th:text="${funcionario.tipo}"></span></td>
+	</tr>
+	
+	</table>
 	
 	
 

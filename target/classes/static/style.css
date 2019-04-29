@@ -55,7 +55,7 @@ input{
 	float:left;
 	width: 100%;
 	height: 55px;
-	background-color: #000040;
+	background-color: #000020;
 	font-size: 1.1em;
 	font-weight: Small-Caps;
 	text-align: center;
@@ -66,7 +66,7 @@ input{
 .menu li{
 	position: relative;
 	float:left;
-	background-color: #000040;
+	background-color: #000020;
 	width: 8%;
 	font-family: sans-serif;
 }
@@ -84,7 +84,7 @@ ul li  a:hover{
 }
 
 .menu li a:hover{
-	background: #000040;
+	background: #000020;
 	color: #fff;
 }
 
@@ -120,6 +120,24 @@ button{
 	border-radius: 3%;
 }
 
+table{
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 80%;
+	border: 1px solid #ccc;
+	margin: auto;
+	margin-top: 2.5%;
+	font-family: Sans-serif;
+}
 
-
+th, td{
+	text-align: left;
+	padding: 1.5%;
+	font-family: Sans-serif;
+}
+tr:nth-child(even){
+	background-color: #000020;
+	color: #fff;
+	font-family: Sans-serif;
+}
 
