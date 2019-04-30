@@ -105,6 +105,7 @@ public class IndexController {
 		Funcionario f = funcionarioRepository.findByEmail(recebeLogin);
 		f.setNome(funcionario.getNome());
 		f.setEmail(funcionario.getEmail());
+		f.setSenha(funcionario.getSenha());
 		funcionarioRepository.save(f);
 	}
 
