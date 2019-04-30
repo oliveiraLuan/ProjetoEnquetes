@@ -178,6 +178,113 @@ th, td{
 	font-family: Sans-serif;
 }
 
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background-color: #f3f3f3;	
+	margin: auto;
+	display:flex;
+	flex-direction: column;
+	text-align: center;
+	font-family: Sans-serif;
+}
+
+.botaoLogin{
+	background-color: #000040; 
+	color: #FFFFFF;
+	width: 20%;
+	padding: 3.5% 3%;
+	border: none;
+	border-bottom: 2px solid red;
+	cursor: pointer;
+}
+.formlogin{
+	border-color: #000040;
+	border-radius: 1%;
+	text-align: center;
+	background-color: #000040;
+	width: 40%;
+	margin: auto;
+	font-family: Arial;
+	heigth: 50%;
+}
+
+
+h3{
+	color: #000040;
+	font-family: Arial;
+	text-align: center;
+}
+
+label{
+	color:#ffffff;
+	display: block;
+}
+input{
+	border: none;
+	border-bottom: 2px solid #000080;
+	width: 30%;
+	padding: 8px 25px;	
+	
+}
+.menu{
+	list-style:none;
+	float:left;
+	width: 100%;
+	height: 55px;
+	background-color: #000020;
+	font-size: 1.1em;
+	font-weight: Small-Caps;
+	text-align: center;
+	box-shadow: #000080 1px 2px 2px;
+	cursor: pointer;
+	
+}
+.menu li a{
+	color: #fff;
+	text-decoration: none;
+	padding: 10px 10px;
+	margin: 5px;
+	display:block;
+}
+
+ul li  a:hover{
+	border-bottom: 2px solid white;
+}
+
+.menu li a:hover{
+	background: #000020;
+	color: #fff;
+}
+
+.menu li ul{
+	position: absolute;
+	top: 55px;
+	left: 0;
+	background-color: #fff;
+	display: none;
+}
+
+.menu li:hover ul, .menu li.over ul{
+	display:block;
+	text-decoration: none;
+}
+
+.menu li ul li{
+	border: none;
+	display:block;
+	width: 100%;
+	border-bottom: 0.3px solid #000080;
+}
+tr:nth-child(even){
+	background-color: #000020;
+	color: #fff;
+	font-family: Sans-serif;
+}
+
   
 }
 
