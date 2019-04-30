@@ -19,3 +19,4 @@ Hibernate
 HTML
 CSS
 Express js
+PostgreSQL
