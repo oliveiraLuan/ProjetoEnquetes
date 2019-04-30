@@ -41,7 +41,7 @@
 	<form th:each="funcionario: ${funcionario}" method="post">
 		<p><input type="nome" name="nome" required="required" th:placeholder="${funcionario.nome}" ></input></p>
 		<p><input type="email" name="email" required="required" th:placeholder="${funcionario.email}"></input></p>
-		<p><input type="password" name="senha" required="required" th:placeholder=""></input></p>
+		<p><input type="password" name="senha" required="required"></input></p>
 		<button type="submit">Alterar</button>
 	</form>
 	</header>
