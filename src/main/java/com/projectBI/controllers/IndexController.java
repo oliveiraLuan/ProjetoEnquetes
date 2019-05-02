@@ -100,6 +100,7 @@ public class IndexController {
 			return mv;
 		}else {
 			attributes.addFlashAttribute("acessonegado", "Acesso negado");
+			mv.setViewName("acessonegado");
 			return mv;
 		}
 		
