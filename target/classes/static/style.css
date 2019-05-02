@@ -142,6 +142,13 @@ tr:nth-child(even){
 	font-family: Sans-serif;
 }
 
+input:valid{
+	border-color: #42d142;
+}
+input:invalid{
+	border-color: #ff8e7a;
+}
+
 @media only screen and (max-width: 600px) {
   button {
     background-color: red; 
