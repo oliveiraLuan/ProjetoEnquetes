@@ -149,6 +149,10 @@ input:invalid{
 	border-color: #ff8e7a;
 }
 
+input:placeholder-shown{
+	border-color: #000040;
+}
+
 @media only screen and (max-width: 600px) {
   button {
     background-color: red; 
