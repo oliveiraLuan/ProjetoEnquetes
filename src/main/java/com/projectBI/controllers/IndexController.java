@@ -83,7 +83,7 @@ public class IndexController {
 			return mv;
 		}else {
 			attributes.addFlashAttribute("mensagem", "Acesso negado");
-			mv.setViewName("/");
+			mv.setViewName("mensagemvalidacao");
 			return mv;
 		}
 		
