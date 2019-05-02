@@ -103,22 +103,26 @@ public class IndexController {
 	}
 
 	@RequestMapping(value = "/atualizarDados", method = RequestMethod.POST)
-	public void setDados(Funcionario funcionario) {
+	public void setDados(Funcionario funcionario, RedirectAttributes attributes) {
 		Funcionario f = funcionarioRepository.findByEmail(recebeLogin);
 		f.setNome(funcionario.getNome());
 		f.setEmail(funcionario.getEmail());
 		f.setSenha(funcionario.getSenha());
 		funcionarioRepository.save(f);
+		attributes.addFlashAttribute("mensagem", "Dados atualizados com sucesso!");
 	}
 
 	@RequestMapping(value = "/deletarUsuario", method = RequestMethod.POST)
-	public String deletarUsuario(String email) {
+	public String deletarUsuario(String email, RedirectAttributes attributes) {
 		Funcionario f = funcionarioRepository.findByEmail(email);
 		if (f != null) {
 			if (funcionarioRepository.findByEmail(email).equals(f)) {
 				funcionarioRepository.delete(f);
+				attributes.addFlashAttribute("mensagem", "Usuário deletado com sucesso");
 			} else {
+				attributes.addFlashAttribute("mensagem", "Usuário não encontrado");
 				return "deletarUsuario";
+				
 			}
 		}
 
