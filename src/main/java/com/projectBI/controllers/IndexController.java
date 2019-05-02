@@ -91,11 +91,19 @@ public class IndexController {
 	}
 
 	@RequestMapping(value = "/comum", method = RequestMethod.GET)
-	public ModelAndView redirecionaComum() {
+	public ModelAndView redirecionaComum(RedirectAttributes attributes) {
 		ModelAndView mv = new ModelAndView("comum");
 		Funcionario funcionario = funcionarioRepository.findByEmail(recebeLogin);
-		mv.addObject("funcionario", funcionario);
-		return mv;
+		if(funcionario != null) {
+			mv.addObject("funcionario", funcionario);
+			funcionario.setEmail("");
+			return mv;
+		}else {
+			attributes.addFlashAttribute("acessonegado", "Acesso negado");
+			return mv;
+		}
+		
+
 	}
 
 	@RequestMapping(value = "/listarUsuarios", method = RequestMethod.GET)
