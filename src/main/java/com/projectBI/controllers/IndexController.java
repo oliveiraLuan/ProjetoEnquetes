@@ -109,8 +109,10 @@ public class IndexController {
 		f.setEmail(funcionario.getEmail());
 		f.setSenha(funcionario.getSenha());
 		funcionarioRepository.save(f);
+		recebeLogin = f.getEmail();
 		attributes.addFlashAttribute("mensagem", "Dados atualizados com sucesso!");
 		return "redirect:/atualizarDados";
+		
 	}
 
 	@RequestMapping(value = "/deletarUsuario", method = RequestMethod.POST)
