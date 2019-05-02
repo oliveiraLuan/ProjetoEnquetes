@@ -77,9 +77,17 @@ public class IndexController {
 	public ModelAndView redirecionaGerente() {
 		ModelAndView mv = new ModelAndView("gerente");
 		Funcionario funcionario = funcionarioRepository.findByEmail(recebeLogin);
-		mv.addObject("funcionario", funcionario);
-		funcionario.setEmail("");
-		return mv;
+		if(funcionario != null) {
+			mv.addObject("funcionario", funcionario);
+			funcionario.setEmail("");
+			return mv;
+		}else {
+			mv.addObject("mensagem", "Acesso negado");
+			mv.setViewName("/");
+			return mv;
+		}
+		
+		
 	}
 
 	@RequestMapping(value = "/comum", method = RequestMethod.GET)
