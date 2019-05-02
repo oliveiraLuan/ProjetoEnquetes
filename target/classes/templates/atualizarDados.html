@@ -43,9 +43,10 @@
 		<p><input type="email" name="email" required="required" th:placeholder="${funcionario.email}"></input></p>
 		<p><input type="password" name="senha" required="required"></input></p>
 		<button type="submit">Alterar</button>
+		<th:block th:include="mensagemavalidacao"></th:block>
 	</form>
 	
-	<th:block th:include="mensagemavalidacao"></th:block>
+	
 	
 	</header>
 	
