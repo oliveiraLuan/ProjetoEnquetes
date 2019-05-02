@@ -43,7 +43,7 @@
 	<form name="cadastrarUsuario" method="post">
 	<p class="nome">
 		<label for="nome"></label>
-		<input type="text" name="nome" required="required" placeholder="Informe o nome do usuário"></input>
+		<input type="text" name="nome" required="required" placeholder="Informe o nome do usuário" pattern="^.{15, 52}$" title="É preciso ter no mínimo 15 caracteres"></input>
 	</p>	
 	<p class="login">
 		<label for="email"></label>
@@ -51,7 +51,7 @@
 	</p>	
 	<p class="senha">
 		<label for="senha"></label>
-		<input type="password" name="senha" required="required" placeholder="Informe a senha do usuário"></input>
+		<input type="password" name="senha" required="required" placeholder="Informe a senha do usuário" pattern="^.{6,10}$" title="A senha deve ter no mínimo 6 caracteres e no máximo 10" maxlength="14"></input>
 	</p>	
 	<p class="tipo">
 		<label for="tipo">Tipo</label>
