@@ -74,7 +74,7 @@ public class IndexController {
 		return "redirect:/";
 		}
 	@RequestMapping(value = "/gerente", method = RequestMethod.GET)
-	public ModelAndView redirecionaGerente() {
+	public ModelAndView redirecionaGerente(RedirectAttributes attributes) {
 		ModelAndView mv = new ModelAndView("gerente");
 		Funcionario funcionario = funcionarioRepository.findByEmail(recebeLogin);
 		if(funcionario != null) {
@@ -82,7 +82,7 @@ public class IndexController {
 			funcionario.setEmail("");
 			return mv;
 		}else {
-			mv.addObject("mensagem", "Acesso negado");
+			attributes.addFlashAttribute("mensagem", "Acesso negado");
 			mv.setViewName("/");
 			return mv;
 		}
