@@ -77,7 +77,7 @@ public class IndexController {
 	public ModelAndView redirecionaGerente(RedirectAttributes attributes) {
 		ModelAndView mv = new ModelAndView("gerente");
 		Funcionario funcionario = funcionarioRepository.findByEmail(recebeLogin);
-		if(funcionario != null) {
+		if(funcionario != null && funcionario.getTipo() == "Gerente") {
 			mv.addObject("funcionario", funcionario);
 			funcionario.setEmail("");
 			return mv;
@@ -94,7 +94,7 @@ public class IndexController {
 	public ModelAndView redirecionaComum(RedirectAttributes attributes) {
 		ModelAndView mv = new ModelAndView("comum");
 		Funcionario funcionario = funcionarioRepository.findByEmail(recebeLogin);
-		if(funcionario != null) {
+		if(funcionario != null && funcionario.getTipo() == "Comum") {
 			mv.addObject("funcionario", funcionario);
 			funcionario.setEmail("");
 			return mv;
