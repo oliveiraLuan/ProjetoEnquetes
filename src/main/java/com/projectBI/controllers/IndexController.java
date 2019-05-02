@@ -103,13 +103,14 @@ public class IndexController {
 	}
 
 	@RequestMapping(value = "/atualizarDados", method = RequestMethod.POST)
-	public void setDados(Funcionario funcionario, RedirectAttributes attributes) {
+	public String setDados(Funcionario funcionario, RedirectAttributes attributes) {
 		Funcionario f = funcionarioRepository.findByEmail(recebeLogin);
 		f.setNome(funcionario.getNome());
 		f.setEmail(funcionario.getEmail());
 		f.setSenha(funcionario.getSenha());
 		funcionarioRepository.save(f);
 		attributes.addFlashAttribute("mensagem", "Dados atualizados com sucesso!");
+		return "redirect:/atualizarDados";
 	}
 
 	@RequestMapping(value = "/deletarUsuario", method = RequestMethod.POST)
@@ -121,7 +122,7 @@ public class IndexController {
 				attributes.addFlashAttribute("mensagem", "Usuário deletado com sucesso");
 			} else {
 				attributes.addFlashAttribute("mensagem", "Usuário não encontrado");
-				return "deletarUsuario";
+				return "redirect:/deletarUsuario";
 				
 			}
 		}
