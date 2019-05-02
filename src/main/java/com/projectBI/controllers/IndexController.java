@@ -233,5 +233,11 @@ public class IndexController {
 
 		return "pieChart";
 	}
+	@RequestMapping(value="/sair", method=RequestMethod.GET)
+	public String sair(){
+		recebeLogin = null;
+		return "redirect:/";
+	}
+	
 
 }
