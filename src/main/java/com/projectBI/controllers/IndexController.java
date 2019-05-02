@@ -82,7 +82,7 @@ public class IndexController {
 			funcionario.setEmail("");
 			return mv;
 		}else {
-			attributes.addFlashAttribute("mensagem", "Acesso negado");
+			attributes.addFlashAttribute("acessonegado", "Acesso negado");
 			mv.setViewName("acessonegado");
 			return mv;
 		}
