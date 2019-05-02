@@ -40,7 +40,7 @@
 	<h3>Alterar dados</h3>
 	<form th:each="funcionario: ${funcionario}" method="post">
 		<p><input type="nome" name="nome" required="required" th:placeholder="${funcionario.nome}" ></input></p>
-		<p><input type="email" name="email" required="required" th:placeholder="${funcionario.email} pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" title="Por favor digite um e-mail válido""></input></p>
+		<p><input type="email" name="email" required="required" th:placeholder="${funcionario.email}" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" title="Por favor digite um e-mail válido"></input></p>
 		<p><input type="password" name="senha" required="required"></input></p>
 		<button type="submit">Alterar</button>
 		<th:block th:include="mensagemvalidacao"></th:block>
