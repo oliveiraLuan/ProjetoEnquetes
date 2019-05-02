@@ -53,7 +53,7 @@ public class IndexController {
 	}
 
 	@RequestMapping(value="/", method=RequestMethod.POST)
-	public String logar(Funcionario funcionario) {
+	public String logar(Funcionario funcionario, RedirectAttributes attributes) {
 		if(funcionarioRepository.findByEmail(funcionario.getEmail()) != null ) {
 			if(funcionarioRepository.findByEmail(funcionario.getEmail()).getSenha().equals(funcionario.getSenha())) {
 				recebeLogin = funcionario.getEmail();
@@ -64,6 +64,10 @@ public class IndexController {
 				}
 				
 				}
+			else {
+				attributes.addFlashAttribute("mensagem", "Usuário ou senha inválidos");
+				return"redirect:/";
+			}
 			
 			return"redirect:/";
 			}
