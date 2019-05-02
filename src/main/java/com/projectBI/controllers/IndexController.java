@@ -122,14 +122,14 @@ public class IndexController {
 			if (funcionarioRepository.findByEmail(email).equals(f)) {
 				funcionarioRepository.delete(f);
 				attributes.addFlashAttribute("mensagem", "Usuário deletado com sucesso");
+				return "redirect:/deletarUsuario";
 			} else {
 				attributes.addFlashAttribute("mensagem", "Usuário não encontrado");
 				return "redirect:/deletarUsuario";
-				
 			}
 		}
 
-		return "deletarUsuario";
+		return "redirect:/deletarUsuario";
 	}
 
 	@RequestMapping(value = "/deletarUsuario", method = RequestMethod.GET)
