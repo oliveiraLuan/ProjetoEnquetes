@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.projectBI.models.Enquete;
 import com.projectBI.models.Funcionario;
@@ -44,9 +45,10 @@ public class IndexController {
 	}
 
 	@RequestMapping(value = "/cadastrarUsuario", method = RequestMethod.POST)
-	public String cadastro(String nome, String email, String senha, String tipo) {
+	public String cadastro(String nome, String email, String senha, String tipo, RedirectAttributes attributes) {
 		Funcionario funcionario = new Funcionario(nome, email, senha, tipo);
 		funcionarioRepository.save(funcionario);
+		attributes.addFlashAttribute("mensagem", "Usuário cadastrado com sucesso");
 		return "redirect:/cadastrarUsuario";
 	}
 
