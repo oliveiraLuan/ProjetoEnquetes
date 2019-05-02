@@ -47,7 +47,7 @@ public class IndexController {
 	public String cadastro(String nome, String email, String senha, String tipo) {
 		Funcionario funcionario = new Funcionario(nome, email, senha, tipo);
 		funcionarioRepository.save(funcionario);
-		return "redirect:/";
+		return "redirect:/cadastrarUsuario";
 	}
 
 	@RequestMapping(value="/", method=RequestMethod.POST)
