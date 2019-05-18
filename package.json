@@ -1,0 +1,19 @@
+{
+  "name": "projectbi",
+  "version": "1.0.0",
+  "description": "projectBI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oliveiraLuan/ProjetoEnquetes.git"
+  },
+  "author": "Luan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oliveiraLuan/ProjetoEnquetes/issues"
+  },
+  "homepage": "https://github.com/oliveiraLuan/ProjetoEnquetes#readme"
+}
