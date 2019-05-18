@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: projectBI
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: loliveirap
+Implementation-Vendor-Id: com.projectBI
+Build-Jdk: 1.8.0_201
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/projectBI
+Created-By: Maven Integration for Eclipse
+
