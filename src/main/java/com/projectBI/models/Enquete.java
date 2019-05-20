@@ -20,7 +20,32 @@ public class Enquete {
 	
 	private int respostaNao;
 	
+	private int respostasPositivasComercial;
 	
+	private int respostasPositivasResidente;
+	
+	private int respostasPositivasGestao;
+	
+	private int respostasPositivasOperacional;
+	
+	private int respostasNegativasComercial;
+	
+	private int respostasNegativasResidente;
+	
+	private int respostasNegativasGestao;
+	
+	private int respostasNegativasOperacional;
+	
+	
+	
+	public int getRespostasNegativasOperacional() {
+		return respostasNegativasOperacional;
+	}
+
+	public void setRespostasNegativasOperacional(int respostasNegativasOperacional) {
+		this.respostasNegativasOperacional = respostasNegativasOperacional;
+	}
+
 	@Id
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
@@ -69,6 +94,63 @@ public class Enquete {
 		this.codigoEnquete = codigoEnquete;
 	}
 
+	public int getRespostasPositivasComercial() {
+		return respostasPositivasComercial;
+	}
+
+	public void setRespostasPositivasComercial(int respostasPositivasComercial) {
+		this.respostasPositivasComercial = respostasPositivasComercial;
+	}
+
+	public int getRespostasPositivasResidente() {
+		return respostasPositivasResidente;
+	}
+
+	public void setRespostasPositivasResidente(int respostasPositivasResidente) {
+		this.respostasPositivasResidente = respostasPositivasResidente;
+	}
+
+	public int getRespostasPositivasGestao() {
+		return respostasPositivasGestao;
+	}
+
+	public void setRespostasPositivasGestao(int respostasPositivasGestao) {
+		this.respostasPositivasGestao = respostasPositivasGestao;
+	}
+
+	public int getRespostasPositivasOperacional() {
+		return respostasPositivasOperacional;
+	}
+
+	public void setRespostasPositivasOperacional(int respostasPositivasOperacional) {
+		this.respostasPositivasOperacional = respostasPositivasOperacional;
+	}
+
+	public int getRespostasNegativasComercial() {
+		return respostasNegativasComercial;
+	}
+
+	public void setRespostasNegativasComercial(int respostasNegativasComercial) {
+		this.respostasNegativasComercial = respostasNegativasComercial;
+	}
+
+	public int getRespostasNegativasResidente() {
+		return respostasNegativasResidente;
+	}
+
+	public void setRespostasNegativasResidente(int respostasNegativasResidente) {
+		this.respostasNegativasResidente = respostasNegativasResidente;
+	}
+
+	public int getRespostasNegativasGestao() {
+		return respostasNegativasGestao;
+	}
+
+	public void setRespostasNegativasGestao(int respostasNegativasGestao) {
+		this.respostasNegativasGestao = respostasNegativasGestao;
+	}
+	
+	
 	
 	
 }

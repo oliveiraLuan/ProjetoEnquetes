@@ -24,11 +24,35 @@ public class IndexController {
 	private String recebeLogin;
 	private int qtdSim;
 	private int qtdNao;
+	private int qtdComercialSim;
+	private int qtdComercialNao;
+	private int qtdResidenteSim;
+	private int qtdResidenteNao;
+	private int qtdGestaoSim;
+	private int qtdGestaoNao;
+	private int qtdOperacionalSim;
+	private int qtdOperacionalNao;
 	private double mediaSim;
 	private double mediaNao;
+	private double mediaSimComercial;
+	private double mediaNaoComercial;
+	private double mediaSimResidente;
+	private double mediaNaoResidente;
+	private double mediaSimGestao;
+	private double mediaNaoGestao;
+	private double mediaSimOperacional;
+	private double mediaNaoOperacional;
 	private double somaTotalSim = 0;
 	private double somaTotalNao = 0;
-
+	private double somaTotalSimComercial = 0;
+	private double somaTotalNaoComercial = 0;
+	private double somaTotalSimResidente = 0;
+	private double somaTotalNaoResidente = 0;
+	private double somaTotalSimGestao = 0;
+	private double somaTotalNaoGestao = 0;
+	private double somaTotalSimOperacional = 0;
+	private double somaTotalNaoOperacional = 0;
+	
 	@Autowired
 	FuncionarioRepository funcionarioRepository;
 	@Autowired
@@ -163,17 +187,58 @@ public class IndexController {
 		Enquete enquete = new Enquete();
 		qtdSim = 0;
 		qtdNao = 0;
+		qtdComercialSim = 0;
+		qtdComercialNao = 0;
+		qtdResidenteSim = 0;
+		qtdResidenteNao = 0;
+		qtdGestaoSim = 0;
+		qtdGestaoNao = 0;
+		qtdOperacionalSim = 0;
+		qtdOperacionalNao = 0;
+		
 		for (String resposta : to) {
 			if (resposta.equals("Sim")) {
 				qtdSim = qtdSim + 1;
 				enquete.setRespostaSim(qtdSim);
-			} else {
+				for(int i = 0; i <= to.size(); i++) {
+					if(i <= 11) {
+						qtdComercialSim = qtdComercialSim + 1;
+						enquete.setRespostasPositivasComercial(qtdComercialSim);
+					}else if(i > 11 && i <= 16){
+						qtdResidenteSim = qtdResidenteSim + 1;
+						enquete.setRespostasPositivasResidente(qtdResidenteSim);
+					}else if(i > 16 && i <= 31 ) {
+						qtdGestaoSim = qtdGestaoSim + 1;
+						enquete.setRespostasPositivasGestao(qtdGestaoSim);
+					}else if(i > 31 && i < 42) {
+						qtdOperacionalSim = qtdOperacionalSim + 1;
+						enquete.setRespostasPositivasOperacional(qtdOperacionalSim);
+					}
+				}
+			}
+			else {
 				qtdNao = qtdNao + 1;
 				enquete.setRespostaNao(qtdNao);
+				for(int i = 0; i <= to.size(); i++) {
+					if(i <= 11) {
+						qtdComercialNao = qtdComercialNao + 1;
+						enquete.setRespostasNegativasComercial(qtdComercialNao);
+					}else if(i > 11 && i <= 16){
+						qtdResidenteNao = qtdResidenteNao + 1;
+						enquete.setRespostasNegativasResidente(qtdResidenteNao);
+					}else if(i > 16 && i <= 31 ) {
+						qtdGestaoNao = qtdGestaoNao + 1;
+						enquete.setRespostasNegativasGestao(qtdGestaoNao);
+					}else if(i > 31 && i <= 42) {
+						qtdOperacionalNao = qtdOperacionalNao + 1;
+						enquete.setRespostasNegativasOperacional(qtdOperacionalNao);
+					}
+				}
 			}
-
 		}
-
+		
+		
+		
 		enqueteRepository.save(enquete);
 		enquete.setRespostaSim(0);
 		enquete.setRespostaNao(0);
@@ -213,6 +278,7 @@ public class IndexController {
 				"O tempo de deslocamento para atendimento dos chamados é satisfatório?",
 				"Está satisfeito com as ferramentas disponibilizadas para os residentes?"
 		};
+		
 		model.addObject("perguntas", perguntas);
 		return model;
 	}
@@ -223,6 +289,8 @@ public class IndexController {
 			somaTotalSim += somatoria.getRespostaSim();
 			somaTotalNao += somatoria.getRespostaNao();
 		}
+		
+		
 
 		mediaSim = (somaTotalSim / (somaTotalNao + somaTotalSim)) * 100;
 		mediaNao = (somaTotalNao / (somaTotalNao + somaTotalSim)) * 100;
@@ -251,6 +319,30 @@ public class IndexController {
 
 		return "pieChart";
 	}
+	@GetMapping("/declaracoesPositivas")
+	public String declaracoesPositivas(Model model) {
+		for (Enquete somatoria : enqueteRepository.findAll()) {
+			somaTotalSimComercial += somatoria.getRespostasPositivasComercial();
+			somaTotalSimResidente += somatoria.getRespostasPositivasResidente();
+			somaTotalSimGestao += somatoria.getRespostasPositivasGestao();
+			somaTotalSimOperacional = somatoria.getRespostasPositivasOperacional();	
+		}
+		
+		mediaSimComercial = (somaTotalSimComercial /(somaTotalSimComercial + somaTotalSimResidente + somaTotalSimGestao + somaTotalSimOperacional )) * 100;
+		mediaSimResidente = (somaTotalSimResidente /(somaTotalSimComercial + somaTotalSimResidente + somaTotalSimGestao + somaTotalSimOperacional)) * 100;
+		mediaSimGestao = (somaTotalSimGestao /(somaTotalSimComercial + somaTotalSimResidente + somaTotalSimGestao + somaTotalSimOperacional)) * 100;
+		mediaSimOperacional = (somaTotalSimOperacional /(somaTotalSimComercial + somaTotalSimResidente + somaTotalSimGestao + somaTotalSimOperacional)) * 100;
+		model.addAttribute("mediaSimComercial", mediaSimComercial);
+		model.addAttribute("mediaSimResidente", mediaSimResidente);
+		model.addAttribute("mediaSimGestao", mediaSimGestao);
+		model.addAttribute("mediaSimOperacional", mediaSimOperacional);
+		
+		return "declaracoesPositivas";
+	}
+	
+	
+	
+	
 	@RequestMapping(value="/sair", method=RequestMethod.GET)
 	public String sair(){
 		recebeLogin = null;
