@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Checkup Corp - Gráfico de Torta</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+<link rel="stylesheet" href="grafico.css"/>
+</head>
+<body>
+	
+	
+	
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	
+	<nav>
+	<ul class="menu" onclick="void(0)">
+		<li><a href="gerente">Home</a></li>
+		<li><a>Usuários</a>
+					<ul>
+					<li><a href="cadastrarUsuario">Cadastrar Usuário</a></li>
+					<li><a href="listarUsuarios">Listar Usuários</a></li>
+					<li><a href="deletarUsuario">Deletar Usuário</a></li>
+					<li><a href="atualizarDados">Atualizar dados</a></li>
+					</ul>
+				</li>
+		<li><a>Relatórios</a>	
+		<ul>
+			<li><a href="displayPieChart">Gráfico Torta</a></li>
+			<li><a href="displayBarGraph">Gráfico Barra</a></li>
+		</ul>
+		</li>
+		<li><a href="sair">Sair</a></li>
+		</ul>
+		
+	</nav>	
+		
+	<div id="container" style="height: 100%"  ></div>
+	
+
+	<script th:inline="javascript">
+		Highcharts.chart('container', {
+			chart : {
+				type : 'pie',
+				options3d : {
+					enabled : true,
+					alpha : 50,
+					beta : 0
+				}
+			},
+			title : {
+				text : 'Resultado'
+			},
+			tooltip : {
+				pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+			},
+			plotOptions : {
+				pie : {
+					allowPointSelect : true,
+					cursor : 'pointer',
+					depth : 35,
+					dataLabels : {
+						enabled : true,
+						format : '{point.name}'
+					}
+				}
+			},
+			series : [ {
+				type : 'pie',
+				name : 'Proporção',
+				data : [ [ 'mediaNaoComercial', [[${mediaNaoComercial}]] ], [ 'mediaNaoResidente', [[${mediaNaoResidente}]] ]  ],
+				[ [ 'mediaNaoGestao', [[${mediaNaoGestao}]] ], [ [ 'mediaNaoOperacional', [[${mediaNaoOperacional}]] ]
+			} ]
+		});
+	</script>
+	
+	
+</body>
+</html>

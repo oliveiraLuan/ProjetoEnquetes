@@ -339,6 +339,27 @@ public class IndexController {
 		
 		return "declaracoesPositivas";
 	}
+	@GetMapping("/declaracoesNegativas")
+	public String declaracoesNegativas(Model model) {
+		for (Enquete somatoria : enqueteRepository.findAll()) {
+			somaTotalNaoComercial += somatoria.getRespostasNegativasComercial();
+			somaTotalNaoResidente += somatoria.getRespostasNegativasResidente();
+			somaTotalNaoGestao += somatoria.getRespostasNegativasGestao();
+			somaTotalNaoOperacional += somatoria.getRespostasNegativasOperacional();
+		}
+		
+		mediaNaoComercial = (somaTotalNaoComercial / somaTotalNaoComercial + somaTotalNaoResidente + somaTotalNaoGestao + somaTotalNaoOperacional) * 100;
+		mediaNaoResidente = (somaTotalNaoResidente / somaTotalNaoComercial + somaTotalNaoResidente + somaTotalNaoGestao + somaTotalNaoOperacional) * 100;
+		mediaNaoGestao = (somaTotalNaoGestao / somaTotalNaoComercial + somaTotalNaoResidente + somaTotalNaoGestao + somaTotalNaoOperacional) * 100;
+		mediaNaoOperacional = (somaTotalNaoOperacional / somaTotalNaoComercial + somaTotalNaoResidente + somaTotalNaoGestao + somaTotalNaoOperacional) * 100;
+		
+		model.addAttribute("mediaNaoComercial", mediaNaoComercial);
+		model.addAttribute("mediaNaoResidente", mediaNaoResidente);
+		model.addAttribute("mediaNaoGestao", mediaNaoGestao);
+		model.addAttribute("mediaNaoOperacional", mediaNaoOperacional);
+		
+		return "declaracoesNegativas";
+	}
 	
 	
 	
