@@ -295,7 +295,9 @@ public class IndexController {
 		surveyMap.put("Positivas", (Double) somaTotalSim);
 		surveyMap.put("Negativas", (Double) somaTotalNao);
 		model.addAttribute("surveyMap", surveyMap);
-
+		
+		somaTotalSim = 0;
+		somaTotalNao = 0;
 		return "relatorios";
 	}
 
