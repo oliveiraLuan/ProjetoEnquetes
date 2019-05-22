@@ -102,6 +102,10 @@ ul li  a:hover{
 	border-bottom: 0.3px solid #000080;
 }
 
+.logo{
+	width: 100%;
+	background-image: url("../img/logo.png");
+}
 
 @media only screen and (max-width: 600px) {
 .botaoLogin{
