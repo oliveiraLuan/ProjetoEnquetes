@@ -104,7 +104,8 @@ ul li  a:hover{
 
 .logo{
 	width: 100%;
-	background-image: url("../img/logo.png");
+	background-image: url(../img/logo.png);
+	margin: auto;
 }
 
 @media only screen and (max-width: 600px) {
