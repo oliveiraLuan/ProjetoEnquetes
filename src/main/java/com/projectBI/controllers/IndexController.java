@@ -289,15 +289,12 @@ public class IndexController {
 			somaTotalSim += somatoria.getRespostaSim();
 			somaTotalNao += somatoria.getRespostaNao();
 		}
-		
 	
 		Map<String, Double> surveyMap = new LinkedHashMap<>();
 		surveyMap.put("Positivas", (Double) somaTotalSim);
 		surveyMap.put("Negativas", (Double) somaTotalNao);
 		model.addAttribute("surveyMap", surveyMap);
-		
-		somaTotalSim = 0;
-		somaTotalNao = 0;
+	
 		return "relatorios";
 	}
 
@@ -357,6 +354,48 @@ public class IndexController {
 		model.addAttribute("mediaNaoOperacional", mediaNaoOperacional);
 		
 		return "declaracoesNegativas";
+	}
+	
+	@GetMapping("/declaracoesPorArea")
+	public String declaracoesPorArea(Model model) {
+		for (Enquete somatoria : enqueteRepository.findAll()) {
+			somaTotalSimComercial += somatoria.getRespostasPositivasComercial();
+			somaTotalSimResidente += somatoria.getRespostasPositivasResidente();
+			somaTotalSimGestao += somatoria.getRespostasPositivasGestao();
+			somaTotalSimOperacional += somatoria.getRespostasPositivasOperacional();	
+		}
+		
+		
+		for (Enquete somatoria : enqueteRepository.findAll()) {
+			somaTotalNaoComercial += somatoria.getRespostasNegativasComercial();
+			somaTotalNaoResidente += somatoria.getRespostasNegativasResidente();
+			somaTotalNaoGestao += somatoria.getRespostasNegativasGestao();
+			somaTotalNaoOperacional += somatoria.getRespostasNegativasOperacional();
+		}
+		mediaSimComercial = (somaTotalSimComercial /(somaTotalSimComercial + somaTotalNaoComercial)) * 100;
+		mediaNaoComercial = (somaTotalNaoComercial /(somaTotalSimComercial + somaTotalNaoComercial)) * 100;
+		
+		mediaSimResidente = (somaTotalSimResidente /(somaTotalSimResidente + somaTotalNaoResidente)) * 100;
+		mediaNaoResidente = (somaTotalNaoResidente /(somaTotalSimResidente + somaTotalNaoResidente)) * 100;
+		
+		mediaSimGestao = (somaTotalSimGestao /(somaTotalSimGestao + somaTotalNaoGestao)) * 100;
+		mediaNaoGestao = (somaTotalNaoGestao /(somaTotalSimGestao + somaTotalNaoGestao)) * 100;
+		
+		mediaSimOperacional = (somaTotalSimOperacional /(somaTotalSimOperacional + somaTotalNaoOperacional)) * 100;
+		mediaNaoOperacional = (somaTotalNaoOperacional /(somaTotalSimOperacional + somaTotalNaoOperacional)) * 100;		
+		
+		model.addAttribute("mediaSimComercial", mediaSimComercial);
+		model.addAttribute("mediaSimResidente", mediaSimResidente);
+		model.addAttribute("mediaSimGestao", mediaSimGestao);
+		model.addAttribute("mediaSimOperacional", mediaSimOperacional);
+		
+		model.addAttribute("mediaNaoComercial", mediaNaoComercial);
+		model.addAttribute("mediaNaoResidente", mediaNaoResidente);
+		model.addAttribute("mediaNaoGestao", mediaNaoGestao);
+		model.addAttribute("mediaNaoOperacional", mediaNaoOperacional);
+		
+		
+		return "declaracoesPorAreaa";
 	}
 	
 	
