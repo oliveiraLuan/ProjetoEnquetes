@@ -310,8 +310,8 @@ public class IndexController {
 		mediaSim = (somaTotalSim / (somaTotalNao + somaTotalSim)) * 100;
 		mediaNao = (somaTotalNao / (somaTotalNao + somaTotalSim)) * 100;
 
-		model.addAttribute("Sim", mediaSim);
-		model.addAttribute("Nao", mediaNao);
+		model.addAttribute("Positivas", mediaSim);
+		model.addAttribute("Negativas", mediaNao);
 
 		return "pieChart";
 	}
