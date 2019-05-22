@@ -395,7 +395,7 @@ public class IndexController {
 		model.addAttribute("mediaNaoOperacional", mediaNaoOperacional);
 		
 		
-		return "declaracoesPorAreaa";
+		return "declaracoesPorArea";
 	}
 	
 	
