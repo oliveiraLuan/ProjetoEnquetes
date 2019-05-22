@@ -292,8 +292,8 @@ public class IndexController {
 		
 	
 		Map<String, Double> surveyMap = new LinkedHashMap<>();
-		surveyMap.put("Sim", (Double) somaTotalSim);
-		surveyMap.put("Não", (Double) somaTotalNao);
+		surveyMap.put("Positivas", (Double) somaTotalSim);
+		surveyMap.put("Negativas", (Double) somaTotalNao);
 		model.addAttribute("surveyMap", surveyMap);
 
 		return "relatorios";
@@ -310,8 +310,8 @@ public class IndexController {
 		mediaSim = (somaTotalSim / (somaTotalNao + somaTotalSim)) * 100;
 		mediaNao = (somaTotalNao / (somaTotalNao + somaTotalSim)) * 100;
 
-		model.addAttribute("Positivas", mediaSim);
-		model.addAttribute("Negativas", mediaNao);
+		model.addAttribute("Sim", mediaSim);
+		model.addAttribute("Nao", mediaNao);
 
 		return "pieChart";
 	}
