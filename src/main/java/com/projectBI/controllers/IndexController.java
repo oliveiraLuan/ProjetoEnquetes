@@ -325,7 +325,7 @@ public class IndexController {
 			somaTotalSimComercial += somatoria.getRespostasPositivasComercial();
 			somaTotalSimResidente += somatoria.getRespostasPositivasResidente();
 			somaTotalSimGestao += somatoria.getRespostasPositivasGestao();
-			somaTotalSimOperacional = somatoria.getRespostasPositivasOperacional();	
+			somaTotalSimOperacional += somatoria.getRespostasPositivasOperacional();	
 		}
 		
 		mediaSimComercial = (somaTotalSimComercial /(somaTotalSimComercial + somaTotalSimResidente + somaTotalSimGestao + somaTotalSimOperacional )) * 100;
