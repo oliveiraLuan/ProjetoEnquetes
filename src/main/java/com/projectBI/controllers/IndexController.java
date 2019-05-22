@@ -290,14 +290,10 @@ public class IndexController {
 			somaTotalNao += somatoria.getRespostaNao();
 		}
 		
-		
-
-		mediaSim = (somaTotalSim / (somaTotalNao + somaTotalSim)) * 100;
-		mediaNao = (somaTotalNao / (somaTotalNao + somaTotalSim)) * 100;
-
+	
 		Map<String, Double> surveyMap = new LinkedHashMap<>();
-		surveyMap.put("Sim", (Double) mediaSim);
-		surveyMap.put("Não", (Double) mediaNao);
+		surveyMap.put("Sim", (Double) somaTotalSim);
+		surveyMap.put("Não", (Double) somaTotalNao);
 		model.addAttribute("surveyMap", surveyMap);
 
 		return "relatorios";
